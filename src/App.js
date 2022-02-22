@@ -4,54 +4,94 @@ import CardInfoDebt from './components/CardInfoDebt';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/containers/ItemListContainer';
 import ShoppingCart from './components/ShoppingCart';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+const products = [
+  {
+    url: "https://via.placeholder.com/150",
+    name: "item1",
+    detail: "Lorem ipsum dolor sit amet ciatis. t commodi, ut esse et. Quo, corporis.",
+    qty: 0,
+    id: 1
+  },
+  {
+    url: "https://via.placeholder.com/150",
+    name: "item2",
+    detail: "Lorem ipsum dolor sit amet ciatis. t commodi, ut esse et. Quo, corporis.",
+    qty: 0,
+    id: 2
+
+  },
+  {
+    url: "https://via.placeholder.com/150",
+    name: "item3",
+    detail: "Lorem ipsum dolor sit amet ciatis. t commodi, ut esse et. Quo, corporis.",
+    qty: 0,
+    id: 3
+  }
+]
 
 function App() {
   const [cartQty, setCardQty] = useState(0)
+  const [productList, setProductList] = useState([])
 
+  const mockProducts = () => {
+    return new Promise(
+      (resolve) => {
+        setTimeout(() => {
+          resolve(products)
+        }, 3000)
+      }
+    )
+  }
+
+
+  useEffect(() => {
+
+
+  }, [])
 
 
 
   return (
     <>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href={()=>{}}>Navbar</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <a className="nav-link" href={()=>{}}>Home <span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href={()=>{}}>Link</a>
+            </li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href={()=>{}} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href={()=>{}}>Action</a>
+                <a className="dropdown-item" href={()=>{}}>Another action</a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href={()=>{}}>Something else here</a>
+              </div>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link disabled" href={()=>{}}>Disabled</a>
+            </li>
+            <li className="nav-item">
+              <ShoppingCart itemQty={cartQty} />
+            </li>
+          </ul>
+
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-      <li class="nav-item">
-        <ShoppingCart itemQty={cartQty}/>
-      </li>
-    </ul>
-    
-  </div>
-</nav>
-<ItemListContainer></ItemListContainer>
-</>
+      </nav>
+      <ItemListContainer></ItemListContainer>
+    </>
 
     // <div className="App">
     //   <CardInfoDebt totalAmount={200.00} dateOfExpiration={"15/09/2056"} dateOfIssue={"15/09/1986"}   ></CardInfoDebt>
